@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+html{
+    font-family: 'Ubuntu', century gothic, 'Times New Roman', Times, serif, Arial, Helvetica, sans-serif;
+}
+.logo{
+    margin-left: 8%;
+    margin-top: 1%;
+}
+.logo-title{
+    margin-left: 8%;
+    color: #606060;
+    margin-top: 0%; 
+}
+.login{
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+.image-center{
+    margin-left: 8%;
+}
+.avatar{
+    min-height: 140px;
+}
+.errorEmail{
+    margin-top: -15px;
+}
+.errorSenha{
+    margin-top: -15px;
+}

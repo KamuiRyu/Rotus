@@ -1,0 +1,27 @@
+.rodape {
+    text-align: center;
+}
+
+.rodape ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.rodape ul li {
+    display: inline;
+}
+
+.rodape ul li a {
+    padding: 10px 15px;
+    display: inline-block;
+    /* visual do link */
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 3px solid #EDEDED;
+}
+
+.rodape ul li a:hover {
+    color: #6D6D6D;
+    border-bottom: 3px solid #EA0000;
+}

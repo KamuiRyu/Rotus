@@ -1,0 +1,33 @@
+		.user-info {
+		    background: #f5f5f5;
+		}
+		
+		strong {
+		    font-weight: 600;
+		    font-size: 18px;
+		}
+		
+		label {
+		    color: #5b5b5b;
+		    font-size: 17px;
+		}
+		
+		@media (max-width: 842px) {
+		    table.responsive-table tbody tr {
+		        display: block !important;
+		    }
+		}
+		
+		@media (max-width: 600px) {
+		    table.responsive-table tbody tr {
+		        display: block !important;
+		    }
+		}
+		
+		@media (min-width: 601px) and (max-width: 990px) {
+		    table.responsive-table tbody tr {
+		        display: block !important;
+		    }
+		}
+		
+		@media (min-width: 991px) {}

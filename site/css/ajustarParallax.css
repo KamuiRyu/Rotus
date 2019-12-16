@@ -1,0 +1,17 @@
+        @media (max-width: 600px) {
+            .parallax-container {
+                height: 370px !important;
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 990px) {
+            .parallax-container {
+                height: 250px !important;
+            }
+        }
+        
+        @media (min-width: 991px) {
+            .parallax-container {
+                height: 250px !important;
+            }
+        }

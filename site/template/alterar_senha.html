@@ -1,0 +1,149 @@
+<!-- BEGIN:alterar_senha-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/../css/global.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/alterar_senha.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/global_conta.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/footer.css" media="screen,projection" />
+    <title>Rotus Security</title>
+    <meta name=" viewport " content="width=device-width, initial-scale=1.0 " />
+</head>
+
+<body>
+    {navbar}
+    <div class="parallax-bg">
+        <div class="parallax-container">
+            <div class="row container center">
+                <div class="col s12 " style="margin-top: 2%;">
+                    <div class="col s12 white-text">
+                        <h4>Onde estamos?</h4>
+                        <p>Essa é a área do administrador! Aqui ele terá as seguintes opções: Em "VER INFORMAÇÕES" ele poderá ter uma visão geral de sua própria conta, poderá editar as suas informações e também conseguirá alterar a sua senha.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey lighten-5">
+        <div class="row center">
+            <div class="container-fluid">
+                <div class="nav-user">
+                    <div class="user-mobile">
+                        <ul>
+                            <li><a href="index.php"><i class="material-icons white-text">home</i></a></li>
+                            <li><a href="editar_info.php"><i class="material-icons white-text">mode_edit</i></a></li>
+                            <li><a href="alterar_senha.php" class="active-item-mobile"><i class="material-icons white-text">lock</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col s12 page">
+                    <div class="col m4 l4">
+                        <div class="user-menu left">
+                            <img src="{foto}" class="responsive-img circle user-img" width="100">
+                            <ul>
+                                <li><a href="index.php" class="white-text"><i class="material-icons left">home</i>VISÃO GERAL DA CONTA</a></li>
+                                <li><a href="editar_info.php" class="white-text"><i class="material-icons left">mode_edit</i>EDITAR INFORMAÇÕES</a></li>
+                                <li><a href="alterar_senha.php" class="white-text active-item"><i class="material-icons left">lock</i>ALTERAR SENHA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col s12 m8 l8 info-account">
+                        <p style="color: #810505;font-size: 25px;font-weight: 600px;">ALTERAR SUA SENHA</p>
+                        <div class="center-align">
+                            <fieldset class="user-info">
+                                <form method="POST" action="alterar_senha.php" id="formAlterar">
+                                    <div class="container">
+                                        <div class="input-field col s12" style="margin-top: 10%;">
+                                            <input id="SenhaAtual" type="password" name="txtSenhaAtual">
+                                            <label for="SenhaAtual">Senha Atual</label>
+                                            <a class="tooltipped hide" id="erroSenhaAtual" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                            <i class="material-icons green-text small hide" id="ACSenhaAtual" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="NovaSenha" type="password" name="txtNovaSenha">
+                                            <label for="NovaSenha">Nova Senha</label>
+                                            <a class="tooltipped hide" id="erroNovaSenha" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                            <i class="material-icons green-text small hide" id="ACNovaSenha" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="ConfNovaSenha" type="password" name="txtConfNovaSenha">
+                                            <label for="ConfNovaSenha">Repita a nova senha</label>
+                                            <a class="tooltipped hide" id="erroConfNovaSenha" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                            <i class="material-icons green-text small hide" id="ACConfNovaSenha" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                        </div>
+                                    </div>
+                                    <button class="btn waves-effect waves-light col s6 m6 l6 offset-m3 offset-s3 offset-l3 red darken-4" id="btnNext" style="margin-top: 2%;">ALTERAR</button>
+                                </form>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large" id="pagTop" style="background-color:#c62828;">
+            <i class="large material-icons">expand_less</i>
+        </a>
+    </div>
+    <footer class="page-footer grey darken-4">
+        <div class="row">
+            <div class="rodape">
+                <ul>
+                    <li><a href="../index.php">INÍCIO</a></li>
+                    <li><a href="../contato.php">CONTATO</a></li>
+                    <li><a href="../sobre.php">SOBRE NÓS</a></li>
+                    <li><a href="../servicos.php">SERVIÇOS</a></li>
+                    <li><a href="../termos.php">TERMOS DE SERVIÇO</a></li>
+                    <li><a href="../politica.php">POLÍTICA DE PRIVACIDADE</a></li>
+                </ul>>
+            </div>
+        </div>
+        <div class="footer-copyright grey darken-4">
+            <div class="col s12">
+                <div class="container">
+                    <ul class="center-align row">
+                        <center>
+                            <li class="ct col s12 m5 l4">
+                                <i class="material-icons yellow-text text-darken-2">mail</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">CONTATO@ROTUSSECURITY.COM.BR</small>
+                            </li>
+                            <li class="col s12 m3 l4">
+                                <i class="material-icons blue-text">phone</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">(11) 95855-8922 OU (11) 94298-4404</small>
+                            </li>
+                            <li class="col s12 m4 l4">
+                                <i class="material-icons red-text">location_on</i>
+                                <br>
+                                <small style="font-size: 13px;font-weight: 0 !important;">R. JAÍRO DE ALMEIDA MACHADO, 401 - JARAGUÁ, SÃO PAULO - SP, 02998-060</small>
+                            </li>
+                        </center>
+                    </ul>
+                </div>
+                <center>
+                    <a href="https://twitter.com/RotusSecurity" target="_blank"><img src="../images/redes-sociais/Twitter.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.facebook.com/ControledeAcessoRotus/" target="_blank"><img src="../images/redes-sociais/Facebook.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.youtube.com/channel/UCfLNX5F4RL9eHEn-XDYOQGw" target="_blank"><img src="../images/redes-sociais/Youtube.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.instagram.com/rotus_security/?hl=pt-br" target="_blank"><img src="../images/redes-sociais/Instagram.png" class="responsive-img" width="75"></a>
+                </center>
+
+            </div>
+            <div class="center-align">
+                © 2017 Todos direitos reservados a Rotus Security
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="/../js/index.js"></script>
+    <script src="/../js/alterar_senha.js"></script>
+</body>
+
+</html>
+<!-- BEGIN:alterar_senha -->

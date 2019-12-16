@@ -1,0 +1,52 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-backbutton": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "com-badrit-backgroundjs": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.rotus.security"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.rotus.security"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.rotus.security"
+        }
+    }
+}

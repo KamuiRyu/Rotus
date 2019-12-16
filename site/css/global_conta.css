@@ -1,0 +1,135 @@
+		.user-img {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		
+		.user-menu ul li {
+			transition: background-color .3s;
+			padding: 0;
+		}
+		
+		.user-menu ul a {
+			padding: 25px 50px;
+			text-transform: uppercase;
+			font-weight: 500;
+			display: block;
+			border-width: 0.1em;
+			border-style: groove;
+			border-color: #3d3d3d;
+		}
+		
+		.user-menu {
+			background: #212121;
+			position: relative;
+		}
+		
+		.parallax-bg {
+			background: #111111;
+		}
+		
+		.active-item {
+			background: linear-gradient(to right, #dd5347 0%, #dd5347 5%, #000 6%, #000 100%);
+		}
+		
+		.user-menu ul i {
+			display: inline;
+		}
+		
+		.user-menu ul a:hover {
+			background: linear-gradient(to right, #dd5347 0%, #dd5347 5%, #000 6%, #000 100%);
+		}
+		
+		fieldset {
+			border: none;
+		}
+		
+		.section {
+			padding-top: 0;
+		}
+        		
+		.user-mobile ul a {
+			padding: 20px 35px;
+			text-transform: uppercase;
+			font-weight: 500;
+			display: block;
+			cursor: pointer;
+		}
+		
+		.user-mobile ul {
+			background-color: #212121;
+			height: 70px;
+			display: flex;
+    		justify-content: center;
+			margin: auto;
+		}
+		
+		.user-mobile {
+			display: block;
+			position: relative;
+			height: 100%;
+		}
+		
+		.user-mobile ul a:hover {
+			background: linear-gradient(to bottom, #dd5347 0%, #dd5347 10%, #000 11%, #000 100%);
+		}
+		
+		.user-mobile ul li {
+			transition: background-color .3s;
+			float: left;
+			padding: 0;
+		}
+		
+		.nav-user {
+			display: none;
+		}
+		
+		.active-item-mobile {
+			background: linear-gradient(to bottom, #dd5347 0%, #dd5347 10%, #000 11%, #000 100%);
+		}
+		
+		@media (max-width: 842px) {
+			.user-menu {
+				display: none;
+			}
+			.info-account {
+				width: 100% !important;
+				text-align: center;
+			}
+			.painel-info{
+				width: 100% !important;
+				text-align: center;
+			}
+			.page {
+				margin-bottom: 0px !important;
+			}
+			.nav-user {
+				display: block;
+			}
+		}
+		
+		@media (max-width: 600px) {
+			.user-menu {
+				display: none;
+			}
+			.parallax-container {
+				height: 250px;
+			}
+		}
+		
+		@media (min-width: 601px) and (max-width: 990px) {
+			.user-menu {
+				width: 100%;
+			}
+			.parallax-container {
+				height: 200px;
+			}
+		}
+		
+		@media (min-width: 991px) {
+			.user-menu {
+				width: 80%;
+			}
+			.parallax-container {
+				height: 200px;
+			}
+		}

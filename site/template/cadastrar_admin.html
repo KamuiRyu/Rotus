@@ -1,0 +1,183 @@
+<!-- BEGIN:cadastrar_admin -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/../css/global.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/conta.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/global_conta.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/footer.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/ajustarParallax.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/cadastrar_admin.css" media="screen,projection" />
+    <title>Rotus Security</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    {navbar}
+    <div class="parallax-bg">
+        <div class="parallax-container">
+            <div class="row container center">
+                <div class="col s12" style="margin-top: 2%;">
+                    <div class="col s12 white-text">
+                        <h4>Onde estamos?</h4>
+                        <p>Essa é a área do administrador! Aqui terá a opção "TODOS OS CURSOS" onde ele poderá ver todos os alunos cadastrados, poderá visualizar as informações, editar e também excluir essas informações, e também pode ver o horário da entrada
+                            e da saída dos alunos. Ele também poderá cadastrar os alunos, tanto manualmente quanto importando uma planilha do Excel para facilitar o serviço, e também poderá cadastrar outros administradores e outros cursos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey lighten-5">
+        <div class="row center">
+            <div class="container-fluid">
+                <div class="nav-user">
+                    <div class="user-mobile">
+                        <ul>
+                            <li><a href="cursos.php"><i class="material-icons white-text">receipt</i></a></li>
+                            <li><a href="cadastrar_aluno.php"><i class="material-icons white-text">mode_edit</i></a></li>
+                            <li><a href="cadastrar_admin.php" class="active-item-mobile"><i class="material-icons white-text">supervisor_account</i></a></li>
+                            <li><a href="cadastrar_curso.php"><i class="material-icons white-text">add</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col s12 page">
+                    <div class="col m4 l4">
+                        <div class="user-menu left">
+                            <ul>
+                                <li><a href="cursos.php" class="white-text"><i class="material-icons left">receipt</i>TODOS OS CURSOS</a></li>
+                                <li><a href="cadastrar_aluno.php" class="white-text"><i class="material-icons left">mode_edit</i>CADASTRAR ALUNO</a></li>
+                                <li><a href="cadastrar_admin.php" class="white-text active-item"><i class="material-icons left">supervisor_account</i>CADASTRAR ADMINISTRADOR</a></li>
+                                <li><a href="cadastrar_curso.php" class="white-text"><i class="material-icons left">add</i>CADASTRAR CURSO</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col s12 l8 m8 painel-info">
+                        <h4 class="center-align">CADASTRAR ADMINISTRADOR</h4>
+                        <!-- BEGIN:alerta -->
+                        {alerta}
+                        <!-- END:alerta -->
+                        <form action="cadastrar_admin.php" id="formCDAdm" method="POST" enctype="multipart/form-data">
+                            <fieldset style="background-color: #fff">
+                                <div id="erroCad"></div>
+                                <legend style="FONT-SIZE: 25px; font-weight: 600;">DADOS PESSOAIS</legend>
+                                <div class="container">
+                                    <div class="">
+                                        <img src="../profiles/avatar.gif" class="responsive-img circle" width="150" id="previewIMG" style="height: 150px !important" />
+                                    </div>
+                                    <div class="red-text" id="fotoErro"></div>
+                                    <a href="#" onclick="document.getElementById('fotoperfil').click();" class="col s12">Alterar Foto</a>
+                                    <div class="file-field input-field hide">
+                                        <div class="btn">
+                                            <span>File</span>
+                                            <input type="file" id="fotoperfil" name="txtFoto" onChange="mostraFoto()">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" id="Foto">
+                                        </div>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="Nome" type="text" name="txtNome" placeholder="DIGITE O NOME COMPLETO*">
+                                        <label for="Nome">Nome</label>
+                                        <a class="tooltipped hide" id="erroNome" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                        <i class="material-icons green-text small hide" id="ACNome" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="Email" type="email" name="txtEmail" placeholder="DIGITE O EMAIL*">
+                                        <label for="Email">Email</label>
+                                        <a class="tooltipped hide" id="erroEmail" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                        <i class="material-icons green-text small hide" id="ACEmail" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="Senha" type="password" name="txtSenha" placeholder="DIGITE A SENHA*">
+                                        <label for="Senha">Senha</label>
+                                        <a class="tooltipped hide" id="erroSenha" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                        <i class="material-icons green-text small hide" id="ACSenha" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <input type="date" class="datepicker" id="dtnasc" name="txtDTNasc" placeholder="Data de Nascimento">
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <select readonly id="Sexo" name="txtSexo">
+                                                <option value="" disabled selected>Selecione o sexo</option>
+                                                <option value="0">Masculino</option>
+                                                <option value="1">Feminino</option>
+                                            </select>
+                                        <label>Sexo</label>
+                                    </div>
+
+                                    <button class="btn waves-effect waves-light col s6 offset-s3 red darken-4" id="btnCadastrar" type="submit" name="submit">CADASTRAR</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large" id="pagTop" style="background-color:#c62828;">
+            <i class="large material-icons">expand_less</i>
+        </a>
+    </div>
+    <footer class="page-footer grey darken-4">">
+        <div class="row">
+            <div class="rodape">
+                <ul>
+                    <li><a href="../index.php">INÍCIO</a></li>
+                    <li><a href="../contato.php">CONTATO</a></li>
+                    <li><a href="../sobre.php">SOBRE NÓS</a></li>
+                    <li><a href="../servicos.php">SERVIÇOS</a></li>
+                    <li><a href="../termos.php">TERMOS DE SERVIÇO</a></li>
+                    <li><a href="../politica.php">POLÍTICA DE PRIVACIDADE</a></li>
+                </ul>>
+            </div>
+        </div>
+        <div class="footer-copyright grey darken-4">
+            <div class="col s12">
+                <div class="container">
+                    <ul class="center-align row">
+                        <center>
+                            <li class="ct col s12 m5 l4">
+                                <i class="material-icons yellow-text text-darken-2">mail</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">CONTATO@ROTUSSECURITY.COM.BR</small>
+                            </li>
+                            <li class="col s12 m3 l4">
+                                <i class="material-icons blue-text">phone</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">(11) 95855-8922 OU (11) 94298-4404</small>
+                            </li>
+                            <li class="col s12 m4 l4">
+                                <i class="material-icons red-text">location_on</i>
+                                <br>
+                                <small style="font-size: 13px;font-weight: 0 !important;">R. JAÍRO DE ALMEIDA MACHADO, 401 - JARAGUÁ, SÃO PAULO - SP, 02998-060</small>
+                            </li>
+                        </center>
+                    </ul>
+                </div>
+                <center>
+                    <a href="https://twitter.com/RotusSecurity" target="_blank"><img src="../images/redes-sociais/Twitter.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.facebook.com/ControledeAcessoRotus/" target="_blank"><img src="../images/redes-sociais/Facebook.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.youtube.com/channel/UCfLNX5F4RL9eHEn-XDYOQGw" target="_blank"><img src="../images/redes-sociais/Youtube.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.instagram.com/rotus_security/?hl=pt-br" target="_blank"><img src="../images/redes-sociais/Instagram.png" class="responsive-img" width="75"></a>
+                </center>
+
+            </div>
+            <div class="center-align">
+                © 2017 Todos direitos reservados a Rotus Security
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/CPF.min.js"></script>
+    <script src="../js/cadastrar_admin.js"></script>
+</body>
+
+</html>
+<!-- END:cadastrar_admin -->

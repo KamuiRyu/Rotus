@@ -1,0 +1,506 @@
+<!-- BEGIN:cursos -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/../css/global.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/conta.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/../css/global_conta.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/footer.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/ajustarParallax.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/cursos.css" media="screen,projection" />
+    <title>Rotus Security</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    {navbar}
+    <div class="parallax-bg">
+        <div class="parallax-container">
+            <div class="row container center">
+                <div class="col s12" style="margin-top: 2%;">
+                    <div class="col s12 white-text">
+                        <h4>Onde estamos?</h4>
+                        <p>Essa é a área do administrador! Aqui terá a opção "TODOS OS CURSOS" onde ele poderá ver todos os alunos cadastrados, poderá visualizar as informações, editar e também excluir essas informações, e também pode ver o horário da entrada
+                            e da saída dos alunos. Ele também poderá cadastrar os alunos, tanto manualmente quanto importando uma planilha do Excel para facilitar o serviço, e também poderá cadastrar outros administradores e outros cursos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey lighten-5">
+        <div class="row center">
+            <div class="container-fluid">
+                <div class="nav-user">
+                    <div class="user-mobile">
+                        <ul>
+                            <li><a href="cursos.php" class="active-item-mobile"><i class="material-icons white-text">receipt</i></a></li>
+                            <li><a href="cadastrar_aluno.php"><i class="material-icons white-text">mode_edit</i></a></li>
+                            <li><a href="cadastrar_admin.php"><i class="material-icons white-text">supervisor_account</i></a></li>
+                            <li><a href="cadastrar_curso.php"><i class="material-icons white-text">add</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col s12 page">
+                    <div class="col m4 l4">
+                        <div class="user-menu left">
+                            <ul>
+                                <li><a href="cursos.php" class="white-text active-item"><i class="material-icons left">receipt</i>TODOS OS CURSOS</a></li>
+                                <li><a href="cadastrar_aluno.php" class="white-text"><i class="material-icons left">mode_edit</i>CADASTRAR ALUNO</a></li>
+                                <li><a href="cadastrar_admin.php" class="white-text"><i class="material-icons left">supervisor_account</i>CADASTRAR ADMINISTRADOR</a></li>
+                                <li><a href="cadastrar_curso.php" class="white-text"><i class="material-icons left">add</i>CADASTRAR CURSO</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="deletarAluno" class="modal">
+                        <div class="modal-content">
+                            <h4>Tem certeza?</h4>
+                            <p>Tem certeza que deseja excluir esse usuario?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a style='cursor:pointer;' class="modal-action modal-close waves-effect waves-red btn-flat ">Não</a>
+                            <a style='cursor:pointer;' class="modal-action modal-close waves-effect waves-green btn-flat" id="btnDeletarAluno" onclick="btnDeletarAluno(this)">Sim</a>
+                        </div>
+                    </div>
+                    <div class="col s12 l8 m8 painel-info">
+                        <h4 class="center-align">BUSCAR ALUNO</h4>
+                        <div id="procuraAluno">
+                            <div class="col s12">
+                                <ul class="tabs grey lighten-5">
+                                    <li class="tab col s6 m6 l6" style="color:#c62828 !important"><a class="active" href="#pesalunos">PESQUISAR ALUNO</a></li>
+                                    <li class="tab col s6 m6 l6" style="color:#c62828 !important"><a href="#aluativos">ALUNOS ATIVOS</a></li>
+                                </ul>
+                            </div>
+                            <div id="pesalunos" class="col s12">
+                                <fieldset style="background-color: #fff">
+                                    <legend style="FONT-SIZE: 25px; font-weight: 600;">FILTRO</legend>
+                                    <div class="input-field col s12 m12 l12">
+                                        <select id="tipoBusca">
+                                        <option value="" disabled selected>Selecione o modo de pesquisa</option>
+                                        <option value="0">Nenhum</option>
+                                        <option value="1">RM</option>
+                                        <option value="2">Nome</option>
+                                        <option value="3">Curso</option>
+                                    </select>
+                                        <label>Forma de pesquisa</label>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12" id="Busca" style="display:none">
+                                        <input id="search" type="search">
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6" id="BuscaCurso" style="display:none">
+                                        <select id="cursoNome">
+                                        {cursos}
+                                    </select>
+                                        <label>Curso</label>
+                                    </div>
+                                    <div class="preloader-wrapper small active hide" id="loadingCursos">
+                                        <div class="spinner-layer spinner-red-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="periodo_modulo"></div>
+                                    <button class="btn waves-effect waves-light col s12 m6 l6 offset-m3 offset-l3 red darken-4" id="btnFiltrar" type="submit" name="submit" style="margin-top: 3%;">FILTRAR</button>
+                                </fieldset>
+                                <fieldset style="background-color: #fff">
+                                    <legend style="FONT-SIZE: 25px; font-weight: 600;">ALUNOS</legend>
+                                    <div id="completeMSG"></div>
+                                    <div class="preloader-wrapper small active hide" id="loadingAlunos">
+                                        <div class="spinner-layer spinner-red-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="responsive-table highlight" id="tabelaAlunos">
+                                        <thead>
+                                            <tr>
+                                                <th>RM</th>
+                                                <th>NOME</th>
+                                                <th>CURSO</th>
+                                                <th>MODULO</th>
+                                                <th>PERIODO</th>
+                                                <th>AÇÕES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mostrarAlunos">
+                                            <!-- BEGIN:mostrarAlunos -->
+                                            <tr>
+                                                <td data-th="RM">{alunoRM}</td>
+                                                <td data-th="NOME">{alunoNome}</td>
+                                                <td data-th="CURSO">{alunoCurso}</td>
+                                                <td data-th="MODULO">{alunoModulo}</td>
+                                                <td data-th="PERIODO">{alunoPeriodo}</td>
+                                                <td data-th="AÇÕES">
+                                                    <a href="#" name="{alunoID}" onclick='visualizarAluno(this)'><i class="material-icons blue-text" title='Visualizar'>visibility</i></a>
+                                                    <a href="#" name="{alunoID}" title='Editar' onclick='editarAluno(this)'><i class="material-icons black-text">mode_edit</i></a>
+                                                    <a href='#deletarAluno' name="{alunoID}" onclick='deletarAluno(this)' title='Deletar'><i class="material-icons red-text">delete</i></a>
+                                                </td>
+                                            </tr>
+                                            <!-- END:mostrarAlunos -->
+                                        </tbody>
+                                    </table>
+                                    <p id="buscaErro">{alunoErro}</p>
+                                </fieldset>
+                            </div>
+                            <div id="aluativos">
+                                <fieldset style="background-color: #fff">
+                                    <legend style="FONT-SIZE: 25px; font-weight: 600;">FILTRO</legend>
+                                    <div class="input-field col s12 m12 l12">
+                                        <select id="tipoBuscaAtivo">
+                                        <option value="" disabled selected>Selecione o modo de pesquisa</option>
+                                        <option value="0">Nenhum</option>
+                                        <option value="1">RM</option>
+                                        <option value="2">Nome</option>
+                                        <option value="3">Curso</option>
+                                    </select>
+                                        <label>Forma de pesquisa</label>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12" id="BuscaAtivo" style="display:none">
+                                        <input id="searchAtivo" type="search">
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12" id="BuscaCursoAtivo" style="display:none">
+                                        <select id="cursoNomeAtivo">
+                                        {cursos}
+                                        </select>
+                                        <label>Curso</label>
+                                    </div>
+                                    <button class="btn waves-effect waves-light col s12 m6 l6 offset-m3 offset-l3 red darken-4" id="btnFiltrarAtivo" type="submit" name="submit" style="margin-top: 3%;">FILTRAR</button>
+                                </fieldset>
+                                <fieldset style="background-color: #fff">
+                                    <legend style="FONT-SIZE: 25px; font-weight: 600;">ALUNOS ATIVOS</legend>
+                                    <div class="preloader-wrapper small active hide" id="loadingAlunosAtivos">
+                                        <div class="spinner-layer spinner-red-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="responsive-table highlight" id="tabelaAlunosAtivos">
+                                        <thead>
+                                            <tr>
+                                                <th>RM</th>
+                                                <th>NOME</th>
+                                                <th>ENTRADA</th>
+                                                <th>SAÍDA</th>
+                                                <th>CURSO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="mostrarAlunosAtivos">
+                                            <!-- BEGIN:mostrarAlunosAtivos -->
+                                            <tr>
+                                                <td data-th="RM">{alunoATVRM}</td>
+                                                <td data-th="NOME">{alunoATVNome}</td>
+                                                <td data-th="ENTRADA">{alunoATVEntrada}</td>
+                                                <td data-th="SAÍDA">{alunoATVSaida}</td>
+                                                <td data-th="CURSO">{alunoATVCurso}</td>
+                                            </tr>
+                                            <!-- END:mostrarAlunosAtivos -->
+                                        </tbody>
+                                    </table>
+                                    <p id="buscaErroAtivo">{alunoATVErro}</p>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="preloader-wrapper small active hide" id="loadingPags">
+                            <div class="spinner-layer spinner-red-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="visualizaAluno" style="display:none;">
+                            <h5>VISUALIZAR</h5>
+                            <fieldset style="background-color: #fff">
+                                <a class="btn-floating red darken-4 left" href="#" id="voltaPag"><i class="material-icons" onclick="voltaPag()">keyboard_backspace</i></a>
+                                <div class="container">
+                                    <img class="responsive-img circle" width="150" style="height: 150px !important" id="viewFoto">
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewRM" type="text" readonly>
+                                        <label for="viewRM">RM</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewNome" type="text" readonly>
+                                        <label for="viewNome">NOME</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewSexo" type="text" readonly>
+                                        <label for="viewSexo">SEXO</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewDTNasc" type="text" readonly>
+                                        <label for="viewDTNasc">DT.NASCIMENTO</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewRG" type="text" readonly>
+                                        <label for="viewRG">RG</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewRGUF" type="text" readonly>
+                                        <label for="viewRGUF">RG UF</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewCPF" type="text" readonly>
+                                        <label for="viewCPF">CPF</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewCEP" type="text" readonly>
+                                        <label for="viewCEP">CEP</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewEndereco" type="text" readonly>
+                                        <label for="viewEndereco">ENDEREÇO</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewEstado" type="text" readonly>
+                                        <label for="viewEstado">ESTADO</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewCidade" type="text" readonly>
+                                        <label for="viewCidade">CIDADE</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewBairro" type="text" readonly>
+                                        <label for="viewBairro">BAIRRO</label></div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewCurso" type="text" readonly>
+                                        <label for="viewCurso">CURSO</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder=" " id="viewPeriodo" type="text" readonly>
+                                        <label for="viewPeriodo">PERIODO</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="editarAluno" style="display:none;">
+                            <h5>EDITAR</h5>
+                            <div class="col s12"><a class="btn-floating red darken-4 left" href="#" id="voltaPag"><i class="material-icons" onclick="voltaPag()">keyboard_backspace</i></a><br></div>
+                            <fieldset style="background-color: #fff">
+                                <legend style="FONT-SIZE: 25px; font-weight: 600;">DADOS PESSOAIS</legend>
+                                <div class="container">
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="Nome" type="text" name="txtNome" placeholder=" " readonly>
+                                        <label for="Nome">Nome</label>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <input id="RM" type="text" name="txtRM" placeholder=" " readonly>
+                                        <label for="RM">RM</label>
+                                    </div>
+                                    <div class="input-field col s12 m12 l12">
+                                        <select readonly id="Sexo" name="txtSexo" disabled>
+                                        <option value="0">Masculino</option>
+                                        <option value="1">Feminino</option>
+                                    </select>
+                                        <label>Sexo</label>
+                                    </div>
+                                    <div class="input-field col s12 m8 l8">
+                                        <input id="RG" type="text" name="txtRG" placeholder=" " readonly>
+                                        <label for="RG">RG</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <select id="RGUF" readonly name="txtRGUF" disabled>
+                                                <option value="AC">AC</option>
+                                                <option value="AL">AL</option>
+                                                <option value="AM">AM</option>
+                                                <option value="AP">AP</option>
+                                                <option value="BA">BA</option>
+                                                <option value="CE">CE</option>
+                                                <option value="DF">DF</option>
+                                                <option value="ES">ES</option>
+                                                <option value="GO">GO</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MG">MG</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MT">MT</option>
+                                                <option value="PA">PA</option>
+                                                <option value="PB">PB</option>
+                                                <option value="PE">PE</option>
+                                                <option value="PI">PI</option>
+                                                <option value="PR">PR</option>
+                                                <option value="RJ">RJ</option>
+                                                <option value="RN">RN</option>
+                                                <option value="RS">RS</option>
+                                                <option value="RO">RO</option>
+                                                <option value="RR">RR</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SE">SE</option>
+                                                <option value="SP">SP</option>
+                                                <option value="TO">TO</option>
+                                            </select>
+                                        <label>UF DO RG</label>
+                                    </div>
+                                    <div class="input-field col s12 m8 l8">
+                                        <input id="CPF" type="text" name="txtCPF" placeholder=" " readonly>
+                                        <label for="CPF">CPF</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input type="date" class="datepicker" id="dtnasc" name="txtDTNasc" placeholder=" " readonly disabled>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset style="background-color: #fff">
+                                <legend style="FONT-SIZE: 25px; font-weight: 600;">ENDEREÇO DE CADASTRO</legend>
+                                <div class="container">
+                                    <div class="input-field col s12 m5 l5">
+                                        <select id="tpEnd" name="txtTipoEndereco" readonly>
+                                        <option value="1">Apartamento</option>
+                                        <option value="2">Casa</option>
+                                        <option value="3">Comercial</option>
+                                        <option value="4">Outro</option>
+                                    </select>
+                                        <label>TIPO DE ENDEREÇO</label>
+                                    </div>
+                                    <div class="input-field col s12 m7 l7">
+                                        <input id="CEP" type="text" name="txtCEP" placeholder="DIGITE O CEP DO ALUNO*">
+                                        <label for="CEP">CEP</label>
+                                        <a class="tooltipped hide" id="erroCEP" data-position="bottom" data-delay="50" style="position: absolute;top: 13%;left: 90%;" data-tooltip=""><i class="material-icons red-text small">error</i></a>
+                                        <i class="material-icons green-text small hide" id="ACCEP" style="position: absolute;top: 13%;left: 90%;">check_circle</i>
+                                    </div>
+                                    <div class="input-field col s8 m10 l10">
+                                        <input id="endereco" name="txtLogradouro" type="text" readonly placeholder=" ">
+                                        <label for="endereco">Endereço</label>
+                                    </div>
+                                    <div class="input-field col s4 m2 l2">
+                                        <input id="numero" name="txtNumero" type="text" placeholder=" "><label for="numero" class="active">Número</label>
+                                    </div>
+                                    <div class="input-field col s12 m8 l8">
+                                        <input id="bairro" name="txtBairro" type="text" readonly placeholder=" ">
+                                        <label for="bairro">Bairro</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input id="complemento" name="txtComplemento" type="text" placeholder=" ">
+                                        <label for="complemento">Complemento</label>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input id="cidade" type="text" name="txtCidade" readonly placeholder=" ">
+                                        <label for="cidade">Cidade</label>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <input id="estado" type="text" name="txtEstado" readonly placeholder=" ">
+                                        <label for="estado">Estado</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset style="background-color: #fff">
+                                <legend style="FONT-SIZE: 25px; font-weight: 600;">DADOS ESCOLARES</legend>
+                                <div class="container">
+                                    <div class="input-field col s12 m6 l6">
+                                        <select id="CURSO" readonly name="txtCurso">
+                                    </select>
+                                        <label>Curso</label>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <select id="MODULO" readonly name="txtModulo">
+                                    </select>
+                                        <label>Modulo</label>
+                                    </div>
+                                    <div class="input-field col s12 m6 l6">
+                                        <select id="PERIODO" readonly name="txtPeriodo">
+                                    </select>
+                                        <label>Periodo</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="editErro"></div>
+                            <button class="btn waves-effect waves-light col s12 m6 l6 offset-m3 offset-l3 red darken-4" id="btnEditar" type="submit" style="margin-top: 3%;" onclick="btnEditar(this)">CONFIRMAR EDIÇÃO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large" id="pagTop" style="background-color:#c62828;">
+            <i class="large material-icons">expand_less</i>
+        </a>
+    </div>
+    <footer class="page-footer grey darken-4">">
+        <div class="row">
+            <div class="rodape">
+                <ul>
+                    <li><a href="../index.php">INÍCIO</a></li>
+                    <li><a href="../contato.php">CONTATO</a></li>
+                    <li><a href="../sobre.php">SOBRE NÓS</a></li>
+                    <li><a href="../servicos.php">SERVIÇOS</a></li>
+                    <li><a href="../termos.php">TERMOS DE SERVIÇO</a></li>
+                    <li><a href="../politica.php">POLÍTICA DE PRIVACIDADE</a></li>
+                </ul>>
+            </div>
+        </div>
+        <div class="footer-copyright grey darken-4">
+            <div class="col s12">
+                <div class="container">
+                    <ul class="center-align row">
+                        <center>
+                            <li class="ct col s12 m5 l4">
+                                <i class="material-icons yellow-text text-darken-2">mail</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">CONTATO@ROTUSSECURITY.COM.BR</small>
+                            </li>
+                            <li class="col s12 m3 l4">
+                                <i class="material-icons blue-text">phone</i>
+                                <br>
+                                <small class="footer-text" style="font-size: 13px;font-weight: 0 !important;">(11) 95855-8922 OU (11) 94298-4404</small>
+                            </li>
+                            <li class="col s12 m4 l4">
+                                <i class="material-icons red-text">location_on</i>
+                                <br>
+                                <small style="font-size: 13px;font-weight: 0 !important;">R. JAÍRO DE ALMEIDA MACHADO, 401 - JARAGUÁ, SÃO PAULO - SP, 02998-060</small>
+                            </li>
+                        </center>
+                    </ul>
+                </div>
+                <center>
+                    <a href="https://twitter.com/RotusSecurity" target="_blank"><img src="../images/redes-sociais/Twitter.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.facebook.com/ControledeAcessoRotus/" target="_blank"><img src="../images/redes-sociais/Facebook.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.youtube.com/channel/UCfLNX5F4RL9eHEn-XDYOQGw" target="_blank"><img src="../images/redes-sociais/Youtube.png" class="responsive-img" width="75"></a>
+                    <a href="https://www.instagram.com/rotus_security/?hl=pt-br" target="_blank"><img src="../images/redes-sociais/Instagram.png" class="responsive-img" width="75"></a>
+                </center>
+
+            </div>
+            <div class="center-align">
+                © 2017 Todos direitos reservados a Rotus Security
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/cursos.js"></script>
+</body>
+
+</html>
+<!-- END:cursos -->

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.rotus.security" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Rotus Security</name>
+    <description>
+        A basic Framework7 template for PhoneGap.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="14" />
+        <allow-intent href="market:*" />
+        <icon density="ldpi" height="36" platform="android" src="icon/ldpi/icon.png" width="36" />
+        <icon density="mdpi" height="48" platform="android" src="icon/mdpi/icon.png" width="48" />
+        <icon density="hdpi" height="72" platform="android" src="icon/hdpi/icon.png" width="72" />
+        <icon density="xhdpi" height="96" platform="android" src="icon/xhdpi/icon.png" width="96" />
+        <icon density="xxhdpi" height="144" platform="android" src="icon/xxhdpi/icon.png" width="144" />
+        <icon density="xxxhdpi" height="192" platform="android" src="icon/xxxhdpi/icon.png" width="192" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="BackupWebStorage" value="none" />
+    </platform>
+    <preference name="DisallowOverscroll" value="true" />
+    <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-plugin-backbutton" spec="^0.3.0" />
+    <plugin name="cordova-plugin-console" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera.git" />
+    <plugin name="com-badrit-backgroundjs" spec="https://github.com/hazemhagrass/BackgroundJS" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="~0.8.5" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+</widget>

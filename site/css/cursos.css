@@ -1,0 +1,18 @@
+        .tabs .tab a {
+            color: rgba(198, 40, 40, 0.7);
+        }
+        
+        .tabs .tab a:hover,
+        .tabs .tab a.active {
+            color: #c62828;
+        }
+        
+        .indicator {
+            background-color: #c62828 !important;
+        }
+        
+        @media only screen and (max-width: 992px) {
+            table.responsive-table tbody {
+                white-space: normal !important;
+            }
+        }

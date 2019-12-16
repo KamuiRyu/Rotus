@@ -1,0 +1,20 @@
+[18-Jun-2017 16:45:50 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/rotus863/public_html/lib/database.php on line 18
+[18-Jun-2017 16:45:50 America/Chicago] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/rotus863/public_html/lib/database.php:21
+Stack trace:
+#0 /home/rotus863/public_html/lib/database.php(21): PDO->rollBack()
+#1 /home/rotus863/public_html/desativar_conta.php(548): Database::execute('SELECT COUNT(0)...')
+#2 /home/rotus863/public_html/desativar_conta.php(17): DesativarConta->geraSenha(10)
+#3 /home/rotus863/public_html/desativar_conta.php(559): DesativarConta->__construct()
+#4 {main}
+  thrown in /home/rotus863/public_html/lib/database.php on line 21
+[18-Jun-2017 16:45:55 America/Chicago] PHP Fatal error:  Uncaught exception 'PDOException' with message 'There is no active transaction' in /home/rotus863/public_html/lib/database.php:21
+Stack trace:
+#0 /home/rotus863/public_html/lib/database.php(21): PDO->rollBack()
+#1 /home/rotus863/public_html/desativar_conta.php(548): Database::execute('SELECT COUNT(0)...')
+#2 /home/rotus863/public_html/desativar_conta.php(17): DesativarConta->geraSenha(10)
+#3 /home/rotus863/public_html/desativar_conta.php(559): DesativarConta->__construct()
+#4 {main}
+  thrown in /home/rotus863/public_html/lib/database.php on line 21
+[18-Jun-2017 16:48:20 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/rotus863/public_html/lib/database.php on line 18
+[22-Jun-2017 13:14:46 America/Chicago] PHP Fatal error:  Class 'Sobre' not found in /home/rotus863/public_html/sobre.php on line 90
+[22-Jun-2017 13:14:46 America/Chicago] PHP Fatal error:  Class 'Sobre' not found in /home/rotus863/public_html/sobre.php on line 90

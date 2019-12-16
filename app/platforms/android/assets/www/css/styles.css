@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v6/RlBXAIuiO5GvH9-0-JbBlw.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+/* latin */
+
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v6/4hYyXH_8WmbBLamf6WjLwg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+body {
+    font-family: 'Dosis', sans-serif;
+}
+
+.statusbar-overlay {
+    background: #000000;
+}
+
+.navbar,
+.subnavbar,
+.toolbar {
+    background: #b92f2f;
+}
+
+strong.info {
+    font-size: 15px;
+}
+
+.aluno-info {
+    text-align: center;
+    width: 100%;
+}
+
+.navbar {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    background: #efefef;
+    color: black;
+}
+
+#page-index {
+    background-image: url(../images/background.gif);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.label-switch input[type=checkbox]:checked+.checkbox:after {
+    background: #00c638 !important;
+}
+
+.label-switch input[type=checkbox]:checked+.checkbox {
+    background: rgba(0, 198, 56, .5) !important;
+}
+
+.list-block input {
+    border-bottom: 1px solid #fff !important;
+    color: #f4f4f4 !important;
+    background: 0 0 !important;
+    ;
+}
+
+.tabbar {
+    top: auto !important;
+    bottom: 0 !important;
+}
+
+form input::-webkit-input-placeholder {
+    color: #bababa !important;
+}
+
+form input:-moz-placeholder {
+    color: #bababa !important;
+}
+
+form input:-ms-input-placeholder {
+    /* IE10+ */
+    color: #bababa !important;
+}
+
+body:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+.focus-state .input-field:after,
+.focus-state .item-input-field:after,
+.input-field.focus-state:after,
+.input-field.not-empty-state:after,
+.item-input-field.focus-state:after,
+.item-input-field.not-empty-state:after,
+.not-empty-state .input-field:after,
+.not-empty-state .item-input-field:after {
+    background: #bababa !important;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    color: #f4f4f4;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
